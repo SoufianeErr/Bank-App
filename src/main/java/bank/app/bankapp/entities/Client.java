@@ -10,7 +10,7 @@ import java.util.*;
 
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor
-public class Client {
+public class Client implements Serializable{
 
    @Id
    private Long code;
@@ -18,4 +18,8 @@ public class Client {
    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
    private List<Compte> comptes;
 
+   public Client(Long code, String name) {
+      this.code = code;
+      this.name = name;
+   }
 }
