@@ -14,18 +14,19 @@ public class ClientService implements IClientService{
 private ClientRepository clientRepository;
 
 public boolean addClient(Client client) {
-
-   List<Client> clients = clientRepository.findAll();
-   if (!clients.contains(client)) { //We don't ge true if the client existe
+   if (!clientRepository.findById(client.getCode()).isPresent()) {
       clientRepository.save(client);
-      //clients.add(client);
       return true;
    }
-    return false;
+   return false;
 }
 
 @Override
 public List<Client> getAllClients() {
       return clientRepository.findAll();
+}
+@Override
+public List<Client> getClientsByName(String nom) {
+      return clientRepository.getClientsHasName(nom);
 }
 }

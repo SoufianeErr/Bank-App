@@ -7,4 +7,5 @@ import java.util.List;
 public interface IClientService {
 public boolean addClient(Client client);
 public List<Client> getAllClients();
+public List<Client> getClientsByName(String name);
 }

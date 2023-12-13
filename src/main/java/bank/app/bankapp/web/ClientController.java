@@ -22,6 +22,15 @@ public ResponseEntity<List<Client>> getAllClients() {
    return ResponseEntity.ok(clientService.getAllClients());
 }
 
+@RequestMapping(method = RequestMethod.GET, value = "/ClientsByName")
+public ResponseEntity<List<Client>> getClientsByName(@RequestParam(defaultValue = "") String name) {
+   return ResponseEntity.ok(clientService.getClientsByName(name));
+}
+
+@RequestMapping(method = RequestMethod.GET, value = "/ClientsByName/{name}")
+public ResponseEntity<List<Client>> getClientsByName2(@PathVariable String name) {
+   return ResponseEntity.ok(clientService.getClientsByName(name));
+}
 
 @RequestMapping(method = RequestMethod.POST, value = "/addClient")
 public ResponseEntity<String> ajouterClient (@RequestBody Client client) {
